@@ -1,0 +1,41 @@
+{
+  "name": "elemsocial",
+  "version": "1.0.0",
+  "description": "node.js package for elemsocial",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "publish:stable": "npm run build && npm publish --access=public",
+    "publish:beta": "npm run build && npm publish --tag beta --access=public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zelear/elemsocial.git"
+  },
+  "keywords": [
+    "elemsocial",
+    "bot",
+    "user",
+    "api"
+  ],
+  "author": "ZelearFox",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zelear/elemsocial/issues"
+  },
+  "homepage": "https://github.com/zelear/elemsocial#readme",
+  "dependencies": {
+    "@types/node": "^20.14.10",
+    "@types/ws": "^8.5.11",
+    "axios": "^1.7.2",
+    "rtb": "^0.0.0-alpha.0",
+    "ts-node": "^10.9.2",
+    "tslib": "^2.6.3",
+    "typescript": "^5.5.3",
+    "ws": "^8.18.0"
+  }
+}
