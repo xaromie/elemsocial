@@ -12,7 +12,7 @@
     <a href="https://github.com/zelear/elemsocial">
         <img src="https://img.shields.io/github/stars/zelear/elemsocial?color=333&logo=github&style=for-the-badge" alt="Github stars">
     </a>
-    <a href="https://github.com/BleachStudio/elemsocial/blob/master/LICENSE">
+    <a href="https://github.com/zelear/elemsocial/blob/master/LICENSE">
         <img src="https://img.shields.io/github/license/zelear/elemsocial?color=6e5494&logo=github&style=for-the-badge" alt="License">
     </a>
     <hr>
