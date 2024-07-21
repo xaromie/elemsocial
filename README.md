@@ -27,13 +27,13 @@
 ##### **NPM**
 
 ```bash
-npm install lavacat
+npm install elemsocial
 ```
 
 ##### **Yarn**
 
 ```bash
-yarn add lavacat
+yarn add elemsocial
 ```
 
 ## Разработчикам
