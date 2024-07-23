@@ -23,16 +23,17 @@
     "api"
   ],
   "author": "ZelearFox",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/zelear/elemsocial/issues"
   },
   "homepage": "https://github.com/zelear/elemsocial#readme",
   "dependencies": {
+    "@types/crypto-js": "^4.2.2",
     "@types/node": "^20.14.10",
     "@types/ws": "^8.5.11",
     "axios": "^1.7.2",
-    "rtb": "^0.0.0-alpha.0",
+    "crypto-js": "^4.2.0",
     "ts-node": "^10.9.2",
     "tslib": "^2.6.3",
     "typescript": "^5.5.3",
