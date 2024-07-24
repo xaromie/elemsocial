@@ -1,3 +1,7 @@
+import { Client } from "./Client"
+import { User } from "../components/User"
+import { Chat } from "./Chat"
+
 export interface ClientOptions {
     wsURL?: string,
     apiURL?: string,
@@ -42,4 +46,22 @@ export type PostsType = 'LATEST' | 'REC' | ' SUBSCRIPTIONS';
 export interface ManyPostsOptions {
     type: PostsType,
     startIndex: number
-}
+};
+
+export interface MessageOptions {
+    client: Client,
+    id: number
+};
+
+export interface CMessageOptions {
+    from: User,
+    content: string,
+    date: Date,
+    chat: Chat,
+    client: Client
+};
+
+export interface MessagesOptions {
+    client: Client,
+    uid: number
+};

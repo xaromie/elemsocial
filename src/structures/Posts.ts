@@ -30,6 +30,20 @@ export class Posts {
     }
 
     public async create(data: PostOptions) {
+        const formdata = new FormData();
+        
+        /*for (let dt of Object.keys(data)) {
+            if (dt == 'Files') {
+                for (let stream of data[dt]) {
+                    formdata.append('Files[]', stream.stream)
+                }
+            } else {
+                formdata.append(dt, data[dt]);
+            }
+        };
+
+        console.log(formdata);*/
+
         const resp = await axios.post(`${this.client.apiURL}/System/API/AddPost.php`,
             data,
             {

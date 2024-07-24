@@ -3,18 +3,23 @@ import { DefaultResponse, ClientData, ClientOptions } from "./Types";
 import axios from "axios";
 import { ElemsocialError } from "./ElemsocialError";
 import { Posts } from "./Posts";
+import { WS } from "./WS";
+import { ActionManager } from "../actions/ActionManager";
 
 export class Client extends EventEmitter {
     public wsURL: string = 'wss://wselem.xyz:2053';
     public apiURL: string = 'https://elemsocial.com';
     public token: string | null = null;
     public data: ClientData | null = null;
+    public actions: ActionManager | null = null;
+    public ws: WS = new WS(this);
 
     public posts: Posts = new Posts(this);
 
     constructor (options: ClientOptions) {
         super();
 
+        this.actions = new ActionManager(this);
         this.data = { email: options.email, password: options.password, chatKey: options.chatKey };
 
         if (options.apiURL) {
@@ -24,7 +29,14 @@ export class Client extends EventEmitter {
             this.wsURL = options.wsURL;
         };
 
-        setInterval(() => {}, 60000);
+    }
+
+    public sendMessage(uid: number, message: string): void {
+        this.ws.send({
+            type: 'send_message',
+            uid: uid,
+            message: message
+        });
     }
 
     public async login(): Promise<void> {
@@ -40,6 +52,7 @@ export class Client extends EventEmitter {
 
         if (respData.Type == 'Verify') {
             this.token = respData.Content;
+            this.ws.connect();
             this.emit('ready', this);
         } else if (respData.Type == 'Error') {
             throw new ElemsocialError(respData.Content);
