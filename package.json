@@ -37,5 +37,9 @@
     "tslib": "^2.6.3",
     "typescript": "^5.5.3",
     "ws": "^8.18.0"
-  }
+  },
+  "directories": {
+    "test": "test"
+  },
+  "devDependencies": {}
 }
