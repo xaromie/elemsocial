@@ -4,6 +4,7 @@ import {
   AuthorsOptions,
   DefaultResponse,
   getLinksOptions,
+  GoldListOptions,
   GoldOptions,
   StatusOptions,
 } from './Types';
@@ -15,7 +16,6 @@ export class Settings {
   constructor(client: Client) {
     this.client = client;
   }
-
   //Смена никнейма
   public name = {
     edit: async (newName: string) => {
@@ -249,10 +249,49 @@ export class Settings {
         } as GoldOptions;
       }
     },
+    buy: async (data: { text: string }) => {
+      const resp = await axios.post(
+        `
+        ${this.client.apiURL}/System/Scripts/Interaction.php?F=SUB_ACT`,
+        {
+          Text: data.text,
+        },
+        {
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+            'S-KEY': this.client.token,
+          },
+        }
+      );
+
+      const respData = resp.data;
+
+      if (respData.Type === 'Error') {
+        throw new ElemsocialError(respData.Content);
+      } else {
+        return {
+          Type: respData.Type,
+          Content: respData.Content,
+        } as DefaultResponse;
+      }
+    },
+    listUsers: async () => {
+      const resp = await axios.get(
+        `${this.client.apiURL}/System/Scripts/Interaction.php?F=GOLD_LIST`
+      );
+      const respData = resp.data;
+      if (respData.Type === 'Error') {
+        throw new ElemsocialError('Список Gold-пользователей не получен');
+      } else {
+        return {
+          list: respData,
+        } as GoldListOptions;
+      }
+    },
   };
   //Управление состоянием ссылок
   public links = {
-    get: async () => {
+    get: async (): Promise<getLinksOptions> => {
       const resp = await axios.get(
         `${this.client.apiURL}/System/API/Settings.php?F=GET_LINKS`,
         {
@@ -269,7 +308,7 @@ export class Settings {
       } else {
         return {
           links: respData,
-        } as getLinksOptions;
+        };
       }
     },
     edit: async (data: { linkId: string; title: string; link: string }) => {

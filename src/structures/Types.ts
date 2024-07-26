@@ -103,3 +103,13 @@ export interface getLinksOptions {
     Title: string;
   }>;
 }
+
+export interface GoldListOptions {
+  list: Array<{
+    Avatar: string;
+    name: string;
+    Posts: number;
+    Subs: number;
+    Username: string;
+  }>;
+}
