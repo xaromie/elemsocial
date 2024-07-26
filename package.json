@@ -34,6 +34,7 @@
     "@types/ws": "^8.5.11",
     "axios": "^1.7.2",
     "crypto-js": "^4.2.0",
+    "dotenv": "^16.4.5",
     "ts-node": "^10.9.2",
     "tslib": "^2.6.3",
     "typescript": "^5.5.3",
