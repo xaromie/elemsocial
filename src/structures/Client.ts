@@ -74,4 +74,5 @@ export class Client extends EventEmitter {
       throw new ElemsocialError(respData.Content);
     }
   }
+  //
 }
