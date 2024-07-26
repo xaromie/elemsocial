@@ -3,5 +3,4 @@ export class ElemsocialError extends Error {
     super(message);
     this.name = 'ElemsocialError';
   }
-  //
 }
